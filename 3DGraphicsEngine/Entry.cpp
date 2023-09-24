@@ -1,5 +1,16 @@
 #include <Windows.h>
 
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg)
+	{
+	case WM_CLOSE:
+		PostQuitMessage(69);
+		break;
+	}
+	return DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
 // Entry point for a Windows application
 int CALLBACK WinMain(
 	HINSTANCE	hInstance,       // Handle to the current instance of the application
@@ -14,7 +25,7 @@ int CALLBACK WinMain(
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(wc);               // Size of the structure
 	wc.style = CS_OWNDC;                  // Class style (own device context)
-	wc.lpfnWndProc = DefWindowProc;       // Pointer to the window procedure
+	wc.lpfnWndProc = WndProc;       // Pointer to the window procedure
 	wc.cbClsExtra = 0;                    // Extra bytes to allocate following the window-class structure
 	wc.cbWndExtra = 0;                    // Extra bytes to allocate following the window instance
 	wc.hInstance = hInstance;             // Handle to the instance that contains the window procedure
@@ -44,9 +55,22 @@ int CALLBACK WinMain(
 	// Display the window
 	ShowWindow(hWnd, SW_SHOW);
 
+	MSG msg;
+	BOOL gResult;
 	// Infinite loop to keep the window running
-	while (true);
+	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
 
-	// Return 0 to indicate successful completion
-	return 0;
+	if (gResult == -1)
+	{
+		return -1;
+	}
+	else
+	{
+		return msg.wParam;
+	}
+	
 }
