@@ -8,6 +8,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case WM_CLOSE: // When the window receives a close message
         PostQuitMessage(69); // Send a quit message with exit code 69
         break;
+
+    case WM_KEYDOWN:
+        if (wParam == 'F')
+        {
+            SetWindowTextA(hWnd, "KeyPRessed");
+            break;
+        }
     }
     return DefWindowProc(hWnd, msg, wParam, lParam); // Default window procedure for unhandled messages
 }
