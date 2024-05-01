@@ -149,11 +149,13 @@
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\Exception.cpp" />
     <ClCompile Include="GraphicsEngine\Core\Entry.cpp" />
     <ClCompile Include="GraphicsEngine\Window\Window.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\Keyboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\Exception.h" />
     <ClInclude Include="GraphicsEngine\Core\WinDef.h" />
     <ClInclude Include="GraphicsEngine\Window\Window.h" />
+    <ClInclude Include="GraphicsEngine\Core\Keyboard.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
