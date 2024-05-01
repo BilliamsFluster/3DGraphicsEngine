@@ -1,5 +1,6 @@
 #include "WinDef.h"
-#include "../Window/Window.h"
+#include "Window/Window.h"
+#include <string>
 
 // Window procedure function to handle messages sent to the window
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -27,25 +28,43 @@ int CALLBACK WinMain(
     LPSTR		lpCmdLine,       // Command line arguments as a single string
     int			nCmdShow)        // Specifies how the window is to be shown
 {
-    
-    Window wnd(800, 300, L"Graphics Engine");
-    Window wnd2(300, 300, L"Graphics Engine");
-    MSG msg;
-    BOOL gResult;
-    // Infinite loop to keep the window running
-    while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
+    try
     {
-        TranslateMessage(&msg); // Translates virtual-key messages into character messages
-        DispatchMessage(&msg); // Dispatches a message to a window procedure
-    }
 
-    // Check the result of GetMessage
-    if (gResult == -1)
-    {
-        return -1; // If there was an error, return -1
+
+        Window wnd(800, 300, "Graphics Engine");
+        
+        MSG msg;
+        BOOL gResult;
+        // Infinite loop to keep the window running
+        while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
+        {
+            TranslateMessage(&msg); // Translates virtual-key messages into character messages
+            DispatchMessage(&msg); // Dispatches a message to a window procedure
+        }
+
+        // Check the result of GetMessage
+        if (gResult == -1)
+        {
+            return -1; // If there was an error, return -1
+        }
+        else
+        {
+            return msg.wParam; // Otherwise, return the exit code
+        }
     }
-    else
+    catch (const Exception& e)
     {
-        return msg.wParam; // Otherwise, return the exit code
+        MessageBoxA(nullptr,e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
+        
     }
+    catch (const std::exception& e)
+    {
+        MessageBoxA(nullptr, e.what(), "Standard Exception ", MB_OK | MB_ICONEXCLAMATION);
+    }
+    catch (...)
+    {
+        MessageBoxA(nullptr,"No Details Available", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
+    }
+    return -1;
 }
