@@ -1,26 +1,40 @@
 #pragma once
-#include "GraphicsEngine/Core/WinDef.h"
+#include "Core/WinDef.h"
+#include "Core/ErrorHandling/Exception.h"
 
 class Window
 {
+public:
+	class WinException : public Exception
+	{
+	public:
+		WinException(int line, const char* file, HRESULT hr) noexcept;
+		const char* what() const noexcept override;
+		virtual const char* GetType() const noexcept override;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+		HRESULT GetErrorCode() const noexcept;
+		std::string GetErrorString() const noexcept;
+	private:
+		HRESULT hr;
+	};
 private:
 	class WindowClass
 	{
 	public:
-		static const wchar_t* GetName() noexcept;
+		static const char* GetName() noexcept;
 		static HINSTANCE GetInstance() noexcept;
 	private:
 		WindowClass() noexcept;
 		~WindowClass();
 		WindowClass(const WindowClass&) = delete;
 		WindowClass& operator =(const WindowClass&) = delete;
-		static constexpr const wchar_t* wndClassName = L" William's Direct X 3D Engine";
+		static constexpr const char* wndClassName = "William's Direct X 3D Engine";
 		static WindowClass wndClass;
 		HINSTANCE hInst;
 
 	};
 public:
-	Window(int width, int height, const wchar_t* name) noexcept;
+	Window(int width, int height, const char* name) ;
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator =(const Window&) = delete;
@@ -35,4 +49,11 @@ private:
 	int height;
 	HWND hWnd;
 };
+// Helper macro
+#define WND_EXCEPT(hr) Window::WinException(__LINE__, __FILE__, hr)
+#define WND_LAST_EXCEPT() Window::WinException(__LINE__, __FILE__, GetLastError())
+
+#ifndef CP_UTF8
+#define CP_UTF8 65001
+#endif
 
