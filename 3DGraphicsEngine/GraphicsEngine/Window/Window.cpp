@@ -30,12 +30,12 @@ Window::WindowClass::WindowClass() noexcept
     wc.cbClsExtra = 0; // Extra bytes to allocate following the window-class structure
     wc.cbWndExtra = 0; // Extra bytes to allocate following the window instance
     wc.hInstance = GetInstance(); // Handle to the instance that contains the window procedure
-    wc.hIcon = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32,32,0)); // Handle to the class icon (not set)
+    wc.hIcon = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 32,32,0)); // Handle to the class icon 
     wc.hCursor = nullptr; // Handle to the class cursor (not set)
     wc.hbrBackground = nullptr; // Handle to the class background brush (not set)
     wc.lpszMenuName = nullptr; // Pointer to the resource name of the class menu (not set)
     wc.lpszClassName = GetName(); // Pointer to the class name
-    wc.hIconSm = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0));; // Handle to the small icon associated with the window class (not set)
+    wc.hIconSm = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0));; // Handle to the small icon associated with the window class 
 
     // Register the window class with the operating system
     RegisterClassExA(&wc);
@@ -97,14 +97,32 @@ LRESULT WINAPI Window::HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM
     return pWnd->HandleMsg(hWnd, msg, wParam, lParam);
 }
 
-LRESULT  Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
+LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
     switch (msg)
     {
     case WM_CLOSE:
         PostQuitMessage(0);
         return 0;
+    case WM_KILLFOCUS:
+        kbd.ClearState();
+        break;
+    case WM_KEYDOWN:
+    case WM_SYSKEYDOWN:
+        if ((!lParam & 0x40000000) || kbd.AutoRepeatIsEnabled())
+        {
+            kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+        }
+        break;
+    case WM_KEYUP:
+    case WM_SYSKEYUP:
+        kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
+        break;
+    case WM_CHAR:
+        kbd.OnChar(static_cast<unsigned char>(wParam));
+        break;
     }
+    
     return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 

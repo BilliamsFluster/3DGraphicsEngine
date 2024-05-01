@@ -41,6 +41,10 @@ int CALLBACK WinMain(
         {
             TranslateMessage(&msg); // Translates virtual-key messages into character messages
             DispatchMessage(&msg); // Dispatches a message to a window procedure
+            if (wnd.kbd.IsKeyPressed(VK_SPACE))
+            {
+                MessageBoxA(nullptr, "Yes", "Space work", MB_OK);
+            }
         }
 
         // Check the result of GetMessage
