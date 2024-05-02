@@ -24,7 +24,10 @@
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\Exception.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsEngine\Core\Keyboard.cpp">
+    <ClCompile Include="GraphicsEngine\Core\Events\Keyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\Events\Mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +44,10 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsEngine\Core\Keyboard.h">
+    <ClInclude Include="GraphicsEngine\Core\Events\Keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\Events\Mouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

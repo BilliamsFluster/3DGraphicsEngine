@@ -1,6 +1,7 @@
 #include "WinDef.h"
 #include "Window/Window.h"
 #include <string>
+#include <sstream>
 
 // Window procedure function to handle messages sent to the window
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -44,6 +45,16 @@ int CALLBACK WinMain(
             if (wnd.kbd.IsKeyPressed(VK_SPACE))
             {
                 MessageBoxA(nullptr, "Yes", "Space work", MB_OK);
+            }
+            while (!wnd.mouse.IsEmpty())
+            {
+                const auto e = wnd.mouse.Read();
+                if (e.GetType() == Mouse::Event::Type::Move)
+                {
+                    std::ostringstream oss;
+                    oss << "Mouse Position: (" << e.GetPosX() << "," << e.GetPosY() << ")";
+                    wnd.SetTitle(oss.str());
+                }
             }
         }
 

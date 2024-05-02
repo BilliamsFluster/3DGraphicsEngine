@@ -1,7 +1,8 @@
 #pragma once
 #include "Core/WinDef.h"
 #include "Core/ErrorHandling/Exception.h"
-#include "Core/Keyboard.h"
+#include "Core/Events/Keyboard.h"
+#include "Core/Events/Mouse.h"
 
 class Window
 {
@@ -39,6 +40,7 @@ public:
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator =(const Window&) = delete;
+	void SetTitle(const std::string& title);
 
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -46,6 +48,7 @@ private:
 	LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 public:
 	Keyboard kbd;
+	Mouse mouse;
 private:
 	int width;
 	int height;
