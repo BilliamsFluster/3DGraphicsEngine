@@ -54,6 +54,21 @@ void Window::SetTitle(const std::string& title)
     }
 }
 
+std::optional<int> Window::ProcessMessages()
+{
+    MSG msg;
+    while (PeekMessageA(&msg, nullptr, 0, 0, PM_REMOVE))
+    {
+        if (msg.message == WM_QUIT)
+        {
+            return msg.wParam;
+        }
+        TranslateMessage(&msg);
+        DispatchMessageA(&msg);
+    }
+    return{};
+}
+
 Window::Window(int width, int height, const char* name)
     : width(width), height(height)
 {
