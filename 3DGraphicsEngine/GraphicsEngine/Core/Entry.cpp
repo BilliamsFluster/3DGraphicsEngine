@@ -1,5 +1,6 @@
 #include "WinDef.h"
 #include "Window/Window.h"
+#include "Application.h"
 #include <string>
 #include <sstream>
 
@@ -31,42 +32,7 @@ int CALLBACK WinMain(
 {
     try
     {
-
-
-        Window wnd(800, 300, "Graphics Engine");
-        
-        MSG msg;
-        BOOL gResult;
-        // Infinite loop to keep the window running
-        while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
-        {
-            TranslateMessage(&msg); // Translates virtual-key messages into character messages
-            DispatchMessage(&msg); // Dispatches a message to a window procedure
-            if (wnd.kbd.IsKeyPressed(VK_SPACE))
-            {
-                MessageBoxA(nullptr, "Yes", "Space work", MB_OK);
-            }
-            while (!wnd.mouse.IsEmpty())
-            {
-                const auto e = wnd.mouse.Read();
-                if (e.GetType() == Mouse::Event::Type::Move)
-                {
-                    std::ostringstream oss;
-                    oss << "Mouse Position: (" << e.GetPosX() << "," << e.GetPosY() << ")";
-                    wnd.SetTitle(oss.str());
-                }
-            }
-        }
-
-        // Check the result of GetMessage
-        if (gResult == -1)
-        {
-            return -1; // If there was an error, return -1
-        }
-        else
-        {
-            return msg.wParam; // Otherwise, return the exit code
-        }
+        return Application{}.Go();
     }
     catch (const Exception& e)
     {
