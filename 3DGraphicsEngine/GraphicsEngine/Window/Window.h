@@ -12,15 +12,26 @@ class Window
 public:
 	class WinException : public Exception
 	{
+		using Exception::Exception;
 	public:
-		WinException(int line, const char* file, HRESULT hr) noexcept;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+	};
+	class HrException : public WinException
+	{
+	public:
+		HrException(int line, const char* file, HRESULT hr) noexcept;
 		const char* what() const noexcept override;
 		virtual const char* GetType() const noexcept override;
-		static std::string TranslateErrorCode(HRESULT hr) noexcept;
 		HRESULT GetErrorCode() const noexcept;
-		std::string GetErrorString() const noexcept;
+		std::string GetErrorDescription() const noexcept;
 	private:
 		HRESULT hr;
+	};
+	class NoGfxException : public WinException
+	{
+	public:
+		using WinException::WinException;
+		const char* GetType() const noexcept override;
 	};
 private:
 	class WindowClass
@@ -60,9 +71,8 @@ private:
 	HWND hWnd;
 	std::unique_ptr<Graphics> pGfx;
 };
-// Helper macro
-#define WND_EXCEPT(hr) Window::WinException(__LINE__, __FILE__, hr)
-#define WND_LAST_EXCEPT() Window::WinException(__LINE__, __FILE__, GetLastError())
+
+
 
 #ifndef CP_UTF8
 #define CP_UTF8 65001

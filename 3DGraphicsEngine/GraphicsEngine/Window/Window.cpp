@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 #include "resource.h"
+#include "WindowsThrowMacros.h"
 
 
 
@@ -71,6 +72,10 @@ std::optional<int> Window::ProcessMessages()
 
 Graphics& Window::Gfx()
 {
+    if (!pGfx)
+    {
+        throw WND_NOGFX_EXCEPT();
+    }
     return *pGfx;
 }
 
@@ -219,23 +224,23 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noe
     return DefWindowProc(hWnd, msg, wParam, lParam);
 }
 
-Window::WinException::WinException(int line, const char* file, HRESULT hr) noexcept
-    :Exception(line, file), hr(hr)
+Window::HrException::HrException(int line, const char* file, HRESULT hr) noexcept
+    :WinException(line, file), hr(hr)
 {
 
 }
 
-const char* Window::WinException::what() const noexcept
+const char* Window::HrException::what() const noexcept
 {
     std::ostringstream oss;
     oss << GetType() << std::endl
         << "[Error Code] " << GetErrorCode() << std::endl
-        << "[Description] " << GetErrorString() << std::endl << GetOriginString();
+        << "[Description] " << GetErrorDescription() << std::endl << GetOriginString();
     whatBuffer = oss.str();
     return whatBuffer.c_str();
 }
 
-const char* Window::WinException::GetType() const noexcept
+const char* Window::HrException::GetType() const noexcept
 {
     return "Window Exception";
 }
@@ -259,12 +264,17 @@ std::string Window::WinException::TranslateErrorCode(HRESULT hr) noexcept
     return errorString;
 }
 
-HRESULT Window::WinException::GetErrorCode() const noexcept
+HRESULT Window::HrException::GetErrorCode() const noexcept
 {
     return hr;
 }
 
-std::string Window::WinException::GetErrorString() const noexcept
+std::string Window::HrException::GetErrorDescription() const noexcept
 {
     return TranslateErrorCode(hr);
+}
+
+const char* Window::NoGfxException::GetType() const noexcept
+{
+    return "Win GFX Exception";
 }

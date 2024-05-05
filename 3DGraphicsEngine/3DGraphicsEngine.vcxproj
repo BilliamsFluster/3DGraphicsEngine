@@ -148,6 +148,9 @@
   <ItemGroup>
     <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp" />
     <ClCompile Include="GraphicsEngine\Application.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.h" />
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\Exception.cpp" />
     <ClCompile Include="GraphicsEngine\Core\Entry.cpp" />
     <ClCompile Include="GraphicsEngine\Window\Window.cpp" />
@@ -158,8 +161,11 @@
   <ItemGroup>
     <ClInclude Include="GraphicsEngine\Core\DirectX\Graphics.h" />
     <ClInclude Include="GraphicsEngine\Application.h" />
+    <ClInclude Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\Exception.h" />
     <ClInclude Include="GraphicsEngine\Core\WinDef.h" />
+    <ClInclude Include="GraphicsEngine\GraphicsThrowMacros.h" />
+    <ClInclude Include="GraphicsEngine\WindowsThrowMacros.h" />
     <ClInclude Include="GraphicsEngine\Window\Window.h" />
     <ClInclude Include="GraphicsEngine\Core\Events\Keyboard.h" />
     <ClInclude Include="GraphicsEngine\Core\Events\Mouse.h" />
@@ -171,6 +177,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\Gear.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorDescription.inl" />
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorString.inl" />
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXTrace.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

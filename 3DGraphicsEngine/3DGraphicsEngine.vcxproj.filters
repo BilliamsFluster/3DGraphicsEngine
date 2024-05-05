@@ -39,6 +39,15 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsEngine\Core\WinDef.h">
@@ -68,6 +77,15 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\GraphicsThrowMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\WindowsThrowMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DGraphicsEngine.rc">
@@ -78,5 +96,16 @@
     <Image Include="..\..\..\..\Downloads\Gear.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorDescription.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorString.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="GraphicsEngine\Core\ErrorHandling\DXTrace.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
