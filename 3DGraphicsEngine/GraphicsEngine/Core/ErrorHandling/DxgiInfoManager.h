@@ -8,7 +8,7 @@ class DxgiInfoManager
 {
 public:
 	DxgiInfoManager();
-	~DxgiInfoManager();
+	~DxgiInfoManager() = delete;
 	DxgiInfoManager(const DxgiInfoManager&) = delete;
 	DxgiInfoManager& operator = (const DxgiInfoManager&) = delete;
 	void Set() noexcept;
