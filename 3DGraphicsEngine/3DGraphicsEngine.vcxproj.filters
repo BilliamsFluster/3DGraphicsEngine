@@ -36,6 +36,9 @@
     <ClCompile Include="GraphicsEngine\Core\Utils\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsEngine\Core\WinDef.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsEngine\Core\Utils\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

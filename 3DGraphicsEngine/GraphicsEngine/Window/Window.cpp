@@ -69,6 +69,11 @@ std::optional<int> Window::ProcessMessages()
     return{};
 }
 
+Graphics& Window::Gfx()
+{
+    return *pGfx;
+}
+
 Window::Window(int width, int height, const char* name)
     : width(width), height(height)
 {
@@ -95,6 +100,7 @@ Window::Window(int width, int height, const char* name)
         throw WND_LAST_EXCEPT();
     }
     ShowWindow(hWnd, SW_SHOWDEFAULT);
+    pGfx = std::make_unique<Graphics>(hWnd);
 }
 
 Window::~Window()
