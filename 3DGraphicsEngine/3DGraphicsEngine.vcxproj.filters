@@ -108,4 +108,8 @@
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\VertexShader.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\PixelShader.hlsl" />
+  </ItemGroup>
 </Project>
