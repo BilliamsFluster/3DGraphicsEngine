@@ -124,6 +124,7 @@
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ShaderModel>5.0</ShaderModel>
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,9 +150,13 @@
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
+      <ShaderModel>5.0</ShaderModel>
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Box.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\Bindable.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp" />
     <ClCompile Include="GraphicsEngine\Application.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.cpp" />
@@ -163,8 +168,21 @@
     <ClCompile Include="GraphicsEngine\Core\Events\Keyboard.cpp" />
     <ClCompile Include="GraphicsEngine\Core\Events\Mouse.cpp" />
     <ClCompile Include="GraphicsEngine\Core\Utils\Timer.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\IndexBuffer.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\InputLayout.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\PixelShader.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\Topology.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Box.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\ConstantBuffer.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\BaseBindable.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\Bindable.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\DrawableBase.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Graphics.h" />
     <ClInclude Include="GraphicsEngine\Application.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.h" />
@@ -175,8 +193,15 @@
     <ClInclude Include="GraphicsEngine\Window\Window.h" />
     <ClInclude Include="GraphicsEngine\Core\Events\Keyboard.h" />
     <ClInclude Include="GraphicsEngine\Core\Events\Mouse.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\IndexBuffer.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\InputLayout.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\PixelShader.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="GraphicsEngine\Core\Utils\Timer.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\Topology.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DGraphicsEngine.rc" />
@@ -188,6 +213,8 @@
     <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorDescription.inl" />
     <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorString.inl" />
     <None Include="GraphicsEngine\Core\ErrorHandling\DXTrace.inl" />
+    <None Include="PixelShader.cso" />
+    <None Include="VertexShader.cso" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\PixelShader.hlsl">
