@@ -116,7 +116,7 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <EnableModules>false</EnableModules>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)GraphicsEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsEngine/Core/DirectX;%(AdditionalIncludeDirectories);$(ProjectDir)GraphicsEngine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,7 +140,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)GraphicsEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)GraphicsEngine/Core/DirectX;%(AdditionalIncludeDirectories);$(ProjectDir)GraphicsEngine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -154,11 +154,13 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GraphicsEngine\Core\DirectX\Box.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Melon.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Box.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\Bindable.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp" />
     <ClCompile Include="GraphicsEngine\Application.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.h" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.cpp" />
@@ -177,7 +179,7 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicsEngine\Core\DirectX\Box.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Box.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\ConstantBuffer.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\BaseBindable.h" />
@@ -185,6 +187,15 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\DrawableBase.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Graphics.h" />
     <ClInclude Include="GraphicsEngine\Application.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\IndexedTriangleList.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Cone.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Cube.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Melon.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Plane.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Prism.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sphere.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\SimpleMath.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\Exception.h" />
     <ClInclude Include="GraphicsEngine\Core\WinDef.h" />
@@ -217,13 +228,25 @@
     <None Include="VertexShader.cso" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\PixelShader.hlsl">
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\VertexShader.hlsl">
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
