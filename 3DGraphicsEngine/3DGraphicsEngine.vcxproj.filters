@@ -75,7 +75,13 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsEngine\Core\DirectX\Box.cpp">
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Melon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,7 +158,34 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsEngine\Core\DirectX\Box.h">
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\IndexedTriangleList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\SimpleMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Cone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Plane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Prism.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Melon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -180,7 +213,9 @@
     <None Include="VertexShader.cso" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\VertexShader.hlsl" />
-    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\PixelShader.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexVS.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexPS.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendVS.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendPS.hlsl" />
   </ItemGroup>
 </Project>

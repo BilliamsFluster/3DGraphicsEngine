@@ -2,7 +2,7 @@
 #include "Window/Window.h"
 #include "Core/Utils/Timer.h"
 #include <memory>
-#include "Core/DirectX/Box.h"
+#include "Core/DirectX/Primitives/Box.h"
 
 
 class Application
@@ -15,6 +15,7 @@ private:
 private:
 		Window wnd;
 		Utils::Timer timer;
-		std::vector<std::unique_ptr<class Box>> boxes;
+		std::vector<std::unique_ptr<class Drawable>> drawables;
+		static constexpr size_t nDrawables = 180;
 };
 
