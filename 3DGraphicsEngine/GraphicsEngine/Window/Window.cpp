@@ -1,9 +1,9 @@
+#include "Core/WinDef.h"
 #include "Window.h"
 #include <sstream>
 #include <string>
 #include "resource.h"
 #include "WindowsThrowMacros.h"
-
 
 
 

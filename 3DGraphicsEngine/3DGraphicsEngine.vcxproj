@@ -154,6 +154,10 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Surface.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\GDIPlusManager.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Melon.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Box.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.cpp" />
@@ -161,6 +165,7 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Graphics.cpp" />
     <ClCompile Include="GraphicsEngine\Application.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Texture.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.cpp" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\dxerr.h" />
     <ClCompile Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.cpp" />
@@ -177,8 +182,13 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Surface.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\GDIPlusManager.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Box.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\Drawable.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\ConstantBuffer.h" />
@@ -196,6 +206,7 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Pyramid.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sphere.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\SimpleMath.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Texture.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="GraphicsEngine\Core\ErrorHandling\Exception.h" />
     <ClInclude Include="GraphicsEngine\Core\WinDef.h" />
@@ -213,14 +224,20 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DGraphicsEngine.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\Gear.ico" />
+    <Image Include="GraphicsEngine\Images\Billy.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ColorBlendPS.cso" />
+    <None Include="ColorBlendVS.cso" />
+    <None Include="ColorIndexPS.cso" />
+    <None Include="ColorIndexVS.cso" />
     <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorDescription.inl" />
     <None Include="GraphicsEngine\Core\ErrorHandling\DXGetErrorString.inl" />
     <None Include="GraphicsEngine\Core\ErrorHandling\DXTrace.inl" />
@@ -251,6 +268,18 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\TexturePS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\TextureVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

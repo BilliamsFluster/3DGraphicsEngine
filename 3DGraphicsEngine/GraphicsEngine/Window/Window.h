@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/WinDef.h"
+
 #include "Core/ErrorHandling/Exception.h"
 #include "Core/Events/Keyboard.h"
 #include "Core/Events/Mouse.h"
