@@ -84,6 +84,24 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Melon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Surface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\GDIPlusManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsEngine\Core\WinDef.h">
@@ -188,6 +206,24 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Melon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\GDIPlusManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DGraphicsEngine.rc">
@@ -196,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\Gear.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="GraphicsEngine\Images\Billy.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -211,11 +250,17 @@
     </None>
     <None Include="PixelShader.cso" />
     <None Include="VertexShader.cso" />
+    <None Include="ColorBlendPS.cso" />
+    <None Include="ColorBlendVS.cso" />
+    <None Include="ColorIndexPS.cso" />
+    <None Include="ColorIndexVS.cso" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexVS.hlsl" />
     <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorIndexPS.hlsl" />
     <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendVS.hlsl" />
     <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\ColorBlendPS.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\TexturePS.hlsl" />
+    <FxCompile Include="GraphicsEngine\Core\DirectX\Shaders\TextureVS.hlsl" />
   </ItemGroup>
 </Project>
