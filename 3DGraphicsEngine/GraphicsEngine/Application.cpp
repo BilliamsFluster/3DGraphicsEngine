@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "SimpleMath.h"
 #include "Surface.h"
-#include "Primitives/Sheet.h"
+#include "Drawable/Sheet.h"
 #include "Primitives/SkinnedBox.h"
 #include "GDIPlusManager.h"
 
