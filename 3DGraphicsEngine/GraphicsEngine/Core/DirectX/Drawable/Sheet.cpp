@@ -4,7 +4,7 @@
 #include "Primitives/Plane.h"
 #include "Surface.h"
 #include "Texture.h"
-#include "Primitives/Sampler.h"
+#include "Sampler.h"
 
 
 Sheet::Sheet(Graphics& gfx,

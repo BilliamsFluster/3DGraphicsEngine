@@ -154,7 +154,7 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Drawable\Sheet.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Surface.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\GDIPlusManager.cpp" />
@@ -182,10 +182,10 @@
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.cpp" />
     <ClCompile Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.cpp" />
-    <ClCompile Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.cpp" />
+    <ClCompile Include="GraphicsEngine\Core\DirectX\Sampler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sheet.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Drawable\Sheet.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\SkinnedBox.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Surface.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\GDIPlusManager.h" />
@@ -224,7 +224,7 @@
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\TransformCbuf.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexBuffer.h" />
     <ClInclude Include="GraphicsEngine\Core\DirectX\Bindable\VertexShader.h" />
-    <ClInclude Include="GraphicsEngine\Core\DirectX\Primitives\Sampler.h" />
+    <ClInclude Include="GraphicsEngine\Core\DirectX\Sampler.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="3DGraphicsEngine.rc" />
